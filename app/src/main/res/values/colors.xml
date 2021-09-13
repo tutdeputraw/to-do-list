@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="cyan">#FF31A4C9</color>
     <color name="blackCustom">#FF373737</color>
+    <color name="redCustom">#FFC93A31</color>
+    <color name="greenCustom">#FF4FC931</color>
 </resources>

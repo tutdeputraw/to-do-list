@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background"
-        android:backgroundTint="@color/blackCustom"
         android:orientation="vertical"
         android:padding="30dp">
 
@@ -18,58 +19,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="To-Do"
-                android:textColor="@color/white" />
-
             <ImageButton
-                android:onClick="closePopup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/circular_button"
+                android:onClick="closePopup"
                 android:src="@drawable/ic_baseline_close_24" />
         </RelativeLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <EditText
+            android:id="@+id/edt_todo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="label"
-            android:outlineAmbientShadowColor="@color/white"
-            android:outlineSpotShadowColor="@color/white"
-            app:boxStrokeColor="@color/white"
-            app:counterOverflowTextColor="@color/white"
-            app:counterTextColor="@color/white"
-            app:hintTextColor="@color/white"
-            app:placeholderTextColor="@color/white">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:hint="To-Do"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <Button
+                android:onClick="addData"
+                android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="@color/blackCustom"
-                android:onClick="makeToDo"
+                android:background="@android:color/transparent"
                 android:text="ADD"
                 android:textColor="@color/cyan" />
         </RelativeLayout>
     </LinearLayout>
-
-
 </LinearLayout>
