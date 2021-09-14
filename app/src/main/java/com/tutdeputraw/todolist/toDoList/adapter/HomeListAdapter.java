@@ -1,9 +1,7 @@
-package com.tutdeputraw.todolist.adapter;
+package com.tutdeputraw.todolist.toDoList.adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
-import android.view.Gravity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,21 +12,20 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import com.tutdeputraw.todolist.R;
-import com.tutdeputraw.todolist.data.HistoryDataList;
+import com.tutdeputraw.todolist.historyList.data.HistoryList;
 import com.tutdeputraw.todolist.models.ToDo;
+import com.tutdeputraw.todolist.toDoList.EditPopupActivity;
 
 import java.util.ArrayList;
 
 public class HomeListAdapter extends ArrayAdapter<ToDo> {
     private final Activity context;
     ArrayList<ToDo> data;
-    View popupView;
     PopupWindow popupWindow;
 
     public HomeListAdapter(Activity context, ArrayList<ToDo> data) {
@@ -47,6 +44,7 @@ public class HomeListAdapter extends ArrayAdapter<ToDo> {
         Button btnDone = rowView.findViewById(R.id.btn_done);
         Button btnEdit = rowView.findViewById(R.id.btn_edit);
         Button btnClose = rowView.findViewById(R.id.btn_close);
+
 
         TextView header = rowView.findViewById(R.id.heading);
         header.setText(data.get(position).getName());
@@ -74,8 +72,7 @@ public class HomeListAdapter extends ArrayAdapter<ToDo> {
                 for (int i = 0; i < data.size(); i++) {
                     System.out.println(data.get(i).getName());
                 }
-                HistoryDataList.toDoList.add(data.get(position));
-//                DataList.toDoList.remove(position);
+                HistoryList.historyList.add(data.get(position));
                 data.remove(position);
 
                 TransitionManager.beginDelayedTransition(cardView,
@@ -86,21 +83,19 @@ public class HomeListAdapter extends ArrayAdapter<ToDo> {
         });
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View popupView = inflater.inflate(R.layout.popup_edit_todolist, null);
-
-                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                boolean focusable = true;
-                popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                Intent i = new Intent(context, EditPopupActivity.class);
+                context.startActivity(i);
             }
         });
 
+//        btnClose.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                context.finish();
+//            }
+//        });
 
 
         return rowView;

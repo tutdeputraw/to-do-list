@@ -9,8 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoList">
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".toDoList.EditPopupActivity"
+            android:theme="@style/Theme.ToDoList.Popme" />
+        <activity
+            android:name=".toDoList.AddPopupActivity"
+            android:theme="@style/Theme.ToDoList.Popme" />
+        <activity android:name=".historyList.HistoryActivity" />
+        <activity android:name=".toDoList.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

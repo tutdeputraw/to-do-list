@@ -1,4 +1,4 @@
-package com.tutdeputraw.todolist.adapter;
+package com.tutdeputraw.todolist.historyList.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

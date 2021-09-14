@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".toDoList.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,7 +70,7 @@
         android:layout_margin="16dp"
         android:background="@color/white"
         android:backgroundTint="@color/cyan"
-        android:onClick="addToDo"
+        android:onClick="fabOnClick"
         app:backgroundTint="@color/white"
         app:rippleColor="@color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
