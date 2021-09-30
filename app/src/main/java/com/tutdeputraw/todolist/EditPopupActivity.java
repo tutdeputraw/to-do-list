@@ -1,5 +1,6 @@
-package com.tutdeputraw.todolist.toDoList;
+package com.tutdeputraw.todolist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -10,10 +11,14 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tutdeputraw.todolist.R;
+import com.tutdeputraw.todolist.database.local.TaskDatabase;
+import com.tutdeputraw.todolist.database.model.Task;
 
 public class EditPopupActivity extends AppCompatActivity {
-    EditText todoEditText;
+    private EditText todoEditText;
+    private TaskDatabase database;
+    private int uid = 0;
+    private Task task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +27,28 @@ public class EditPopupActivity extends AppCompatActivity {
 
         todoEditText = findViewById(R.id.edt_todo);
 
+        initDatabase();
+        getIntentExtra();
+        initializeTask();
+        setTextTodoEditText(task.name);
         initPopup();
+    }
+
+    private void initDatabase() {
+        database = TaskDatabase.getInstance(getApplicationContext());
+    }
+
+    private void getIntentExtra() {
+        Intent intent = getIntent();
+        uid = intent.getIntExtra("uid", 0);
+    }
+
+    private void initializeTask() {
+        task = database.taskDao().getUncompletedTask(uid);
+    }
+
+    public void setTextTodoEditText(String todoEditText) {
+        this.todoEditText.setText(todoEditText);
     }
 
     public void initPopup() {
@@ -43,9 +69,13 @@ public class EditPopupActivity extends AppCompatActivity {
     }
 
     public void deleteOnClick(View view) {
+        database.taskDao().delete(task);
+        finish();
     }
 
     public void saveOnClick(View view) {
+        database.taskDao().update(task.uid, task.name, 0);
+        finish();
     }
 
     public void closeOnClick(View view) {

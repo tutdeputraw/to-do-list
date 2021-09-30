@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".historyList.HistoryActivity">
+    tools:context=".HistoryActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -49,8 +49,8 @@
             android:layout_height="match_parent"
             android:fillViewport="true">
 
-            <ListView
-                android:id="@+id/listItem"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </ScrollView>

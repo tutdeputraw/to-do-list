@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoList">
         <activity
-            android:name=".toDoList.EditPopupActivity"
+            android:name=".EditPopupActivity"
             android:theme="@style/Theme.ToDoList.Popme" />
         <activity
-            android:name=".toDoList.AddPopupActivity"
+            android:name=".AddPopupActivity"
             android:theme="@style/Theme.ToDoList.Popme" />
-        <activity android:name=".historyList.HistoryActivity" />
-        <activity android:name=".toDoList.MainActivity">
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

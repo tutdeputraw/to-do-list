@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".toDoList.MainActivity">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="To-Do List"
+                    android:text="@string/to_do_list"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -35,11 +35,13 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
+                    android:background="@android:color/transparent"
+                    android:onClick="historyOnClick"
+                    android:text="@string/history"
                     android:textAllCaps="false"
-                    android:backgroundTint="@color/cyan"
-                    android:onClick="clickHistory"
-                    android:text="History" />
+                    tools:ignore="RelativeOverlap,UsingOnClickInXml" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
@@ -51,10 +53,11 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true">
+                android:fillViewport="true"
+                tools:ignore="UselessParent">
 
-                <ListView
-                    android:id="@+id/listItem"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </ScrollView>
@@ -70,8 +73,10 @@
         android:layout_margin="16dp"
         android:background="@color/white"
         android:backgroundTint="@color/cyan"
+        android:contentDescription="@string/todo"
         android:onClick="fabOnClick"
         app:backgroundTint="@color/white"
         app:rippleColor="@color/white"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:ignore="UnusedAttribute,UsingOnClickInXml" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
