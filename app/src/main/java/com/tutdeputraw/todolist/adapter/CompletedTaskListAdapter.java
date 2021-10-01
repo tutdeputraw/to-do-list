@@ -16,10 +16,11 @@ import com.tutdeputraw.todolist.database.model.Task;
 
 import java.util.List;
 
-public class CompletedTaskListAdapter extends RecyclerView.Adapter<CompletedTaskListAdapter.ViewAdapter> {
-    private List<Task> list;
-    private Context context;
-    private TaskDatabase database;
+public class CompletedTaskListAdapter
+        extends RecyclerView.Adapter<CompletedTaskListAdapter.ViewAdapter> {
+    private final List<Task> list;
+    private final Context context;
+    private final TaskDatabase database;
 
     public CompletedTaskListAdapter(Context context, List<Task> list) {
         this.list = list;
@@ -29,22 +30,22 @@ public class CompletedTaskListAdapter extends RecyclerView.Adapter<CompletedTask
 
     @NonNull
     @Override
-    public CompletedTaskListAdapter.ViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.history, parent, false);
+    public CompletedTaskListAdapter.ViewAdapter onCreateViewHolder(
+            @NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(
+                R.layout.history, parent, false);
         return new CompletedTaskListAdapter.ViewAdapter(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CompletedTaskListAdapter.ViewAdapter holder, int position) {
+    public void onBindViewHolder(
+            @NonNull CompletedTaskListAdapter.ViewAdapter holder, int position) {
         Task task = list.get(position);
         holder.heading.setText(task.name);
 
-        holder.restore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                database.taskDao().update(task.uid, task.name, 0);
-                holder.refresh();
-            }
+        holder.restore.setOnClickListener(v -> {
+            database.taskDao().update(task.uid, task.name, 0);
+            holder.refresh();
         });
     }
 

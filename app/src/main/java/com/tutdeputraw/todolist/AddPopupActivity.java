@@ -30,7 +30,7 @@ public class AddPopupActivity extends AppCompatActivity {
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
 
-        getWindow().setLayout((int) (width), (int) (height));
+        getWindow().setLayout(width, height);
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
@@ -60,26 +60,31 @@ public class AddPopupActivity extends AppCompatActivity {
         super.onStart();
         Log.d("lifecycle", "AddPopupActivity onStart invoked");
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         Log.d("lifecycle", "AddPopupActivity onResume invoked");
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         Log.d("lifecycle", "AddPopupActivity onPause invoked");
     }
+
     @Override
     protected void onStop() {
         super.onStop();
         Log.d("lifecycle", "AddPopupActivity onStop invoked");
     }
+
     @Override
     protected void onRestart() {
         super.onRestart();
         Log.d("lifecycle", "AddPopupActivity onRestart invoked");
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

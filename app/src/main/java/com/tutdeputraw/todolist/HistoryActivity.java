@@ -19,7 +19,7 @@ public class HistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CompletedTaskListAdapter completedTaskListAdapter;
     private TaskDatabase database;
-    private List<Task> list = new ArrayList<>();
+    private final List<Task> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,8 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        completedTaskListAdapter = new CompletedTaskListAdapter(getApplicationContext(), list);
+        completedTaskListAdapter =
+                new CompletedTaskListAdapter(getApplicationContext(), list);
     }
 
     private void setRecyclerView() {

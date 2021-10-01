@@ -22,9 +22,6 @@ public interface TaskDao {
     @Query("UPDATE task SET name=:name, isDone=:isDone WHERE uid=:uid")
     void update(int uid, String name, int isDone);
 
-    @Query("SELECT * FROM task WHERE uid=:uid AND isDone = 1")
-    Task getCompletedTask(int uid);
-
     @Query("SELECT * FROM task WHERE uid=:uid AND isDone = 0")
     Task getUncompletedTask(int uid);
 

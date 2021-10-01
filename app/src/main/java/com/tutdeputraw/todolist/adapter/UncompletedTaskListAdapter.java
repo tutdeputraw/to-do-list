@@ -61,11 +61,11 @@ public class UncompletedTaskListAdapter
             Intent i = new Intent(context, EditPopupActivity.class);
             i.putExtra("uid", task.uid);
             context.startActivity(i);
-        });
-
-        holder.arrow.setOnClickListener(v -> {
             holder.manageExpandableCard();
         });
+
+        holder.itemView.setOnClickListener(v -> holder.manageExpandableCard());
+        holder.arrow.setOnClickListener(v -> holder.manageExpandableCard());
     }
 
     @Override

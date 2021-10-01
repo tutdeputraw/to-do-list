@@ -15,7 +15,7 @@ import com.tutdeputraw.todolist.database.local.TaskDatabase;
 import com.tutdeputraw.todolist.database.model.Task;
 
 public class EditPopupActivity extends AppCompatActivity {
-    private EditText todoEditText;
+    private EditText todoName;
     private TaskDatabase database;
     private int uid = 0;
     private Task task;
@@ -25,7 +25,7 @@ public class EditPopupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_popup);
 
-        todoEditText = findViewById(R.id.edt_todo);
+        todoName = findViewById(R.id.edt_todo);
 
         initDatabase();
         getIntentExtra();
@@ -48,7 +48,7 @@ public class EditPopupActivity extends AppCompatActivity {
     }
 
     public void setTextTodoEditText(String todoEditText) {
-        this.todoEditText.setText(todoEditText);
+        this.todoName.setText(todoEditText);
     }
 
     public void initPopup() {
@@ -58,7 +58,7 @@ public class EditPopupActivity extends AppCompatActivity {
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
 
-        getWindow().setLayout((int) (width), (int) (height));
+        getWindow().setLayout(width, height);
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
@@ -74,7 +74,7 @@ public class EditPopupActivity extends AppCompatActivity {
     }
 
     public void saveOnClick(View view) {
-        database.taskDao().update(task.uid, task.name, 0);
+        database.taskDao().update(task.uid, todoName.getText().toString(), 0);
         finish();
     }
 
