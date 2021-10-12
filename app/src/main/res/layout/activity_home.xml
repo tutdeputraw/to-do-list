@@ -23,7 +23,19 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:background="@android:color/transparent"
+                    android:onClick="logoutOnClick"
+                    android:text="@string/logout"
+                    android:textAllCaps="false"
+                    tools:ignore="RelativeOverlap,UsingOnClickInXml" />
+
                 <TextView
+                    android:id="@+id/todolist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -42,6 +54,8 @@
                     android:text="@string/history"
                     android:textAllCaps="false"
                     tools:ignore="RelativeOverlap,UsingOnClickInXml" />
+
+
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 

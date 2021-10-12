@@ -22,4 +22,13 @@ public class Session {
     public boolean loggedin() {
         return prefs.getBoolean("loggedInmode", false);
     }
+
+    public void setUsername(String username) {
+        editor.putString("username", username.toUpperCase());
+        editor.commit();
+    }
+
+    public String getUsername() {
+        return prefs.getString("username", "");
+    }
 }

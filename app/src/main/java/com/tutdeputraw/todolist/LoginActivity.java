@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (db.getUser(email, pass)) {
             session.setLoggedin(true);
+            session.setUsername(email);
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         } else {
