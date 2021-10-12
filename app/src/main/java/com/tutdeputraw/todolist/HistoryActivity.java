@@ -7,15 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tutdeputraw.todolist.database.account.Session;
 import com.tutdeputraw.todolist.adapter.CompletedTaskListAdapter;
-import com.tutdeputraw.todolist.database.local.TaskDatabase;
-import com.tutdeputraw.todolist.database.model.Task;
+import com.tutdeputraw.todolist.database.task.TaskDatabase;
+import com.tutdeputraw.todolist.database.task.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class HistoryActivity extends AppCompatActivity {
+    private Session session;
     private RecyclerView recyclerView;
     private CompletedTaskListAdapter completedTaskListAdapter;
     private TaskDatabase database;
@@ -27,6 +29,7 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         recyclerView = findViewById(R.id.recycler_view2);
+        session = new Session(this);
 
         getDatabaseInstance();
         initList();
@@ -36,7 +39,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void initList() {
         list.clear();
-        list.addAll(database.taskDao().getCompletedTask());
+        list.addAll(database.taskDao().getCompletedTask(session.getUsername()));
     }
 
     private void getDatabaseInstance() {
@@ -62,7 +65,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void refresh() {
         list.clear();
-        list.addAll(database.taskDao().getCompletedTask());
+        list.addAll(database.taskDao().getCompletedTask(session.getUsername()));
         completedTaskListAdapter.notifyDataSetChanged();
     }
 

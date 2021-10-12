@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tutdeputraw.todolist.account.Session;
+import com.tutdeputraw.todolist.database.account.Session;
 
 public class MainActivity extends AppCompatActivity {
     private Session session;

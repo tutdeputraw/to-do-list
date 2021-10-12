@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tutdeputraw.todolist.account.DbHelper;
-import com.tutdeputraw.todolist.account.Session;
+import com.tutdeputraw.todolist.database.account.DbHelper;
+import com.tutdeputraw.todolist.database.account.Session;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail;

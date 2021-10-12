@@ -1,4 +1,4 @@
-package com.tutdeputraw.todolist.database.local;
+package com.tutdeputraw.todolist.database.task;
 
 import android.content.Context;
 
@@ -10,7 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.tutdeputraw.todolist.database.model.Task;
+import com.tutdeputraw.todolist.database.task.model.Task;
 
 @Database(
         entities = {Task.class},

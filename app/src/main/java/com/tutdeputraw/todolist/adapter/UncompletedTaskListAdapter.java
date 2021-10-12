@@ -19,8 +19,9 @@ import androidx.transition.TransitionManager;
 
 import com.tutdeputraw.todolist.EditPopupActivity;
 import com.tutdeputraw.todolist.R;
-import com.tutdeputraw.todolist.database.local.TaskDatabase;
-import com.tutdeputraw.todolist.database.model.Task;
+import com.tutdeputraw.todolist.database.account.Session;
+import com.tutdeputraw.todolist.database.task.TaskDatabase;
+import com.tutdeputraw.todolist.database.task.model.Task;
 
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class UncompletedTaskListAdapter
                                           int viewType) {
         View view = LayoutInflater.from(
                 parent.getContext()).inflate(R.layout.todo, parent, false);
-        return new ViewAdapter(view);
+        return new ViewAdapter(view, context);
     }
 
     @Override
@@ -51,8 +52,9 @@ public class UncompletedTaskListAdapter
         holder.heading.setText(task.name);
 
         holder.btnDone.setOnClickListener(v -> {
+            Session session = new Session(context);
             Log.e("BTN DONE", "TEST 123");
-            database.taskDao().update(task.uid, task.name, 1);
+            database.taskDao().update(task.uid, task.name, 1, session.getUsername());
             holder.manageExpandableCard();
             holder.refreshList();
         });
@@ -74,6 +76,7 @@ public class UncompletedTaskListAdapter
     }
 
     class ViewAdapter extends RecyclerView.ViewHolder {
+        Context context;
         TextView heading;
         ImageButton arrow;
         LinearLayout hiddenView;
@@ -81,8 +84,9 @@ public class UncompletedTaskListAdapter
         Button btnEdit;
         Button btnDone;
 
-        public ViewAdapter(@NonNull View itemView) {
+        public ViewAdapter(@NonNull View itemView, Context context) {
             super(itemView);
+            this.context = context;
             heading = itemView.findViewById(R.id.heading);
             arrow = itemView.findViewById(R.id.arrow_button);
             hiddenView = itemView.findViewById(R.id.hidden_view);
@@ -118,8 +122,9 @@ public class UncompletedTaskListAdapter
         }
 
         void refreshList() {
+            Session session = new Session(context);
             list.clear();
-            list.addAll(database.taskDao().getUncompletedTask());
+            list.addAll(database.taskDao().getUncompletedTask(session.getUsername()));
             notifyDataSetChanged();
         }
     }

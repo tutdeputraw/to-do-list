@@ -1,4 +1,4 @@
-package com.tutdeputraw.todolist.database.model;
+package com.tutdeputraw.todolist.database.task.model;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -11,4 +11,6 @@ public class Task {
     public String name;
 
     public int isDone;
+
+    public String user;
 }

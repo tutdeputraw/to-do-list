@@ -11,8 +11,9 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tutdeputraw.todolist.database.local.TaskDatabase;
-import com.tutdeputraw.todolist.database.model.Task;
+import com.tutdeputraw.todolist.database.account.Session;
+import com.tutdeputraw.todolist.database.task.TaskDatabase;
+import com.tutdeputraw.todolist.database.task.model.Task;
 
 public class EditPopupActivity extends AppCompatActivity {
     private EditText todoName;
@@ -44,7 +45,8 @@ public class EditPopupActivity extends AppCompatActivity {
     }
 
     private void initializeTask() {
-        task = database.taskDao().getUncompletedTask(uid);
+        Session session = new Session(this);
+        task = database.taskDao().getUncompletedTask(uid,session.getUsername());
     }
 
     public void setTextTodoEditText(String todoEditText) {
@@ -74,7 +76,8 @@ public class EditPopupActivity extends AppCompatActivity {
     }
 
     public void saveOnClick(View view) {
-        database.taskDao().update(task.uid, todoName.getText().toString(), 0);
+        Session session = new Session(this);
+        database.taskDao().update(task.uid, todoName.getText().toString(), 0, session.getUsername());
         finish();
     }
 

@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tutdeputraw.todolist.account.Session;
+import com.tutdeputraw.todolist.database.account.Session;
 import com.tutdeputraw.todolist.adapter.UncompletedTaskListAdapter;
-import com.tutdeputraw.todolist.database.local.TaskDatabase;
-import com.tutdeputraw.todolist.database.model.Task;
+import com.tutdeputraw.todolist.database.task.TaskDatabase;
+import com.tutdeputraw.todolist.database.task.model.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initList() {
         list.clear();
-        list.addAll(database.taskDao().getUncompletedTask());
+        list.addAll(database.taskDao().getUncompletedTask(session.getUsername()));
     }
 
     private void getDatabaseInstance() {
@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void refresh() {
         list.clear();
-        list.addAll(database.taskDao().getUncompletedTask());
+        list.addAll(database.taskDao().getUncompletedTask(session.getUsername()));
         uncompletedTaskListAdapter.notifyDataSetChanged();
     }
 
