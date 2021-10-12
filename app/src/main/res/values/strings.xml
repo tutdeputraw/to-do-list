@@ -6,4 +6,10 @@
     <string name="todo">TODO</string>
     <string name="delete">DELETE</string>
     <string name="save">SAVE</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="register">register</string>
+    <string name="logout">logout</string>
+    <string name="back_to_login">BACK TO LOGIN</string>
 </resources>
